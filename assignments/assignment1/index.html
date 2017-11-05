@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+    </style>
+  </head>
+<body ng-app='LunchCheck'>
+   <div ng-controller='LunchCheckController' class="container">
+     <h1>Lunch Checker</h1>
+
+         <div class="form-group">
+             <input id="lunch-menu" type="text"
+                    ng-model="mealsString"
+                    placeholder="list comma separated dishes you usually have for lunch"
+                    class="form-control">
+         </div>
+         <div class="form-group">
+             <button class="btn btn-default"
+                     ng-click="mealsCheck();">
+              Check If Too Much
+             </button>
+         </div>
+         <div class="form-group message" ng-if="mealsStatusShow()">
+         {{mealsStatus}}
+           <div ng-switch on="mealsStatus">
+             <div class="alert alert-success" ng-switch-when="1">
+               <p> Enjoy! </p>
+             </div>
+             <div class="alert alert-danger"  ng-switch-when="2">
+               <p> Too much! </p>
+             </div>
+             <div class="alert alert-info"    ng-switch-when="-1">
+               <p> Please enter data first </p>
+             </div>
+             <div class="alert alert-danger"  ng-switch-default>
+               <p> Application expected some error! </p>
+             </div>
+             <div class="alert alert-warning"    ng-if="mealsEmptyDetection">
+               <p>
+                 It seams that You put some empty string between two coma's
+                 (something like "item1, ,item2"). This empty string is ignored
+                 during calculation!
+               </p>
+             </div>
+           </div>
+         </div>
+   </div>
+
+</body>
+</html>

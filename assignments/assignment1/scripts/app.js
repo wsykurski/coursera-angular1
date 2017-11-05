@@ -38,7 +38,7 @@ function LunchCheckController($scope) {
     var size = 0;
     var array = meals.split(",");
     for (var i = 0; i < array.length; i++) {
-      if (checkSingleMeal(array[i])) { size = size + 1;}
+      if (checkSingleMeal(array[i])) { size++;}
     };
     return size;
   };

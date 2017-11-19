@@ -35,11 +35,12 @@
      <h2>To Buy:</h2>
      <input type="text" ng-model="toBuy.name" placeholder="item name">
      <input type="text" ng-model="toBuy.quantity" placeholder="quantity">
-     <button ng-click="toBuy.addItem();">Add Item</button>
+     <button ng-click="toBuy.addItem();" class="btn btn-success">Add Item</button>
+     <br>
      <ul>
        <li ng-repeat="item in toBuy.items">
          {{item.quantity}} of {{ item.name}}
-         <button type="button" ng-click="toBuy.boughtThis($index)"> Already Bought!</button>
+         <button type="button" ng-click="toBuy.boughtThis($index)" class="btn btn-primary">Bought</button>
        </li>
      </ul>
      <div class="emptyMessage" ng-if="toBuy.isEmpty()">Everything is bought!</div>

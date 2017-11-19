@@ -33,7 +33,6 @@ function ShoppingListCheckOffService() {
   var toBuyList = populateToBuyArray();    // list of items to buy
   var alreadyBoughtList = [];              // list of items already bought
 
-  console.log('Start values: ', toBuyList);
   service.getToBuy = () => { return toBuyList };
   service.getAlreadyBought = () => { return alreadyBoughtList };
 
@@ -47,9 +46,8 @@ function ShoppingListCheckOffService() {
   };
 
   service.boughtByIndex = function (index) {
-    alreadyBoughtList.push(
-      toBuyList.splice(index, 1)[0] // because of GUI buttons, there always only ONE item moves at time
-    )
+     // because of GUI buttons, there always only ONE item moves at time
+    alreadyBoughtList.push(toBuyList.splice(index, 1)[0]);
   }
 };
 

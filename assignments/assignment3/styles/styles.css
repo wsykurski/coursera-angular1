@@ -9,8 +9,10 @@ input[type="text"] {
   float: left;
   margin-left: 10px;
 }
+.loading_info, table.table_info {
+  display: none;
+}
 .loader {
-  display: true;
   margin-left: 5px;
   font-size: 10px;
   float: left;

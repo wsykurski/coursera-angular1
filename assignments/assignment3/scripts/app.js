@@ -12,21 +12,54 @@ function ListData() {
     templateUrl: 'templates/listData.html',
     scope: {
       items: '<',
-      requestDone: '<',
+      apiRequestFlag: '<',
       onDelete: '&'
     },
     controller: ListDataController,
     controllerAs: 'list',
-    bindToController: true
+    bindToController: true,
+    link: ListDataLink
   };
 };
 
 function ListDataController() {
   var list = this;
 
-  list.isListNotEmpty = () => { return !list.items || list.items.length > 0 };
-  list.isApiResponseEmpty = () => { return !list.isListNotEmpty() && list.requestDone };
+  list.isApiRequestDone = () => { return list.apiRequestFlag == 2 };
+  list.isApiRequestInProgress = () => { return list.apiRequestFlag == 1 };
 
+  list.isListNotEmpty = () => { return !list.items || list.items.length > 0 };
+  list.isApiResponseEmpty = () => { return !list.isListNotEmpty() && list.isApiRequestDone() };
+
+};
+
+
+function ListDataLink(scope, element, attrs, controller) {
+  scope.$watch('list.isApiRequestInProgress()', function (newVal, oldVal) {
+    if(newVal === true) {
+      console.log('Api in progess');
+      console.log('old value', oldVal);
+      console.log('new value', newVal);
+      showLoader();
+    }
+    else {
+      console.log('Api unknown');
+      console.log('old value', oldVal);
+      console.log('new value', newVal);
+      hideLoader();
+    }
+  });
+
+  function showLoader() {
+    element.find("div.loading_info").slideDown(300);
+    element.find("div.table_info").slideUp(300);
+  };
+
+  function hideLoader() {
+    element.find("div.loading_info").slideUp(300, function () {
+      element.find("div.table_info").slideDown(300);
+    });
+  };
 };
 
 
@@ -36,25 +69,35 @@ function NarrowItDownController(MenuSearchService) {
 
   narrow.term = "";
   narrow.found = [];
-  narrow.isApiRequestDone = false;
+  // Flag for checking Api Response, possibla values:
+  // 0 => not started
+  // 1 => in progress
+  // 2 => done
+  narrow.apiRequestFlag = 0;
 
-  var assignApiResponce = function (data) {
+  // Assign Api response to found and set apiRequestFlag
+  var handleApiResponce = function (data) {
     narrow.found = data;
-    narrow.isApiRequestDone = true;
+    narrow.apiRequestFlag = 2; // Set Api flag to done
   };
 
   narrow.itDown = function () {
      // Guardian Case:
-    if (narrow.term.length == 0) { return };
+    if (narrow.term.length == 0) {
+      handleApiResponce([]);
+      return
+    };
+    // Set Api flag to in progress:
+    narrow.apiRequestFlag = 1;
     // Api call:
     MenuSearchService.searchMenuCategories(narrow.term)
-    .then(function (data) { assignApiResponce(data) })
+    .then(function (data) { handleApiResponce(data); })
     .catch(function (error) { console.log("Something went terribly wrong."); });
   }
 
+  //narrow.isApiRequestDone = () => { return narrow.apiRequestFlag == 2 };
+  //narrow.isApiRequestInProgress = () => { return narrow.apiRequestFlag == 1 };
   narrow.remove = (index) => { narrow.found.splice(index, 1); };
-  narrow.termChanged = () => { narrow.isApiRequestDone = false };
-
 };
 
 
@@ -63,7 +106,7 @@ function MenuSearchService($http, ApiBasePath) {
   var service = this;
 
   var checkSingleItem = (item, value) =>
-  { return (item.description.indexOf(value) != -1) };
+  { return (item.description.toLowerCase().indexOf(value.toLowerCase()) != -1) };
 
   var searchDescription = function (list, value) {
     var result = [];

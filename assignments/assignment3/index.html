@@ -22,7 +22,6 @@
           <input type="text"
                  placeholder="search term"
                  ng-model="narrow.term"
-                 ng-change="narrow.termChanged();"
                  class="form-control">
           <button class="btn btn-primary" ng-click="narrow.itDown()">Narrow It Down For Me!</button>
         </div>
@@ -31,7 +30,7 @@
       <div class="row">
         <!-- found-items should be implemented as a component -->
         <list-data items="narrow.found"
-                   request-done= "narrow.isApiRequestDone"
+                   api-request-flag="narrow.apiRequestFlag"
                    on-delete="narrow.remove(index)">
         </list-data>
       </div>

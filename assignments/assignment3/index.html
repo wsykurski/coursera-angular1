@@ -4,10 +4,12 @@
     <title>Narrow Down Your Menu Choice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- js scripts -->
     <script src="scripts/vendor/jquery-3.1.0.min.js"></script>
     <script src="scripts/vendor/angular.min.js"></script>
     <script src="scripts/app.js"></script>
 
+    <!-- css files -->
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
   </head>
@@ -15,15 +17,25 @@
   <div class="container" ng-controller="NarrowItDownController as narrow">
       <h1>Narrow Down Your Chinese Menu Choice</h1>
 
-      <div class="form-group">
-        <input type="text" placeholder="search term" ng-model="narrow.term" class="form-control">
-      </div>
-      <div class="form-group narrow-button">
-        <button class="btn btn-primary" ng-click="narrow.itDown()">Narrow It Down For Me!</button>
+      <div class="row">
+        <div class="form-group">
+          <input type="text"
+                 placeholder="search term"
+                 ng-model="narrow.term"
+                 ng-change="narrow.termChanged();"
+                 class="form-control">
+          <button class="btn btn-primary" ng-click="narrow.itDown()">Narrow It Down For Me!</button>
+        </div>
       </div>
 
-      <!-- found-items should be implemented as a component -->
-      <found-items found-items="...." on-remove="...."></found-items>
+      <div class="row">
+        <!-- found-items should be implemented as a component -->
+        <list-data items="narrow.found"
+                   request-done= "narrow.isApiRequestDone"
+                   on-delete="narrow.remove(index)">
+        </list-data>
+      </div>
+
   </div>
 
 </body>

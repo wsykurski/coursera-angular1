@@ -1,0 +1,28 @@
+<table class="table table-striped table-hover" ng-if="list.isListNotEmpty();">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Short Name</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in list.items">
+      <td>{{ item.name }}</td>
+      <td>{{ item.short_name }}</td>
+      <td>{{ item.description }}</td>
+      <td>
+        <button type="button"
+                class="btn btn-danger btn-sm"
+                ng-click="list.onDelete({index: $index});">
+          Don't want this one!
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="loader"></div>
+<div class="alert alert-warning" ng-if="list.isApiResponseEmpty();">
+  Nothing found!
+</div>

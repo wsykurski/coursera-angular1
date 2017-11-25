@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	0	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ListData	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^function ListData() {$/;"	function	line:10
+ListData	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^function ListData() {$/;"	function	line:10
+NarrowItDownController	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^function NarrowItDownController(MenuSearchService) {$/;"	function	line:21
+itDown	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^  narrow.itDown = function () {$/;"	function	line:25
+narrow.itDown	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^  narrow.term = ""; \/\/ Searched String$/;"	function	line:23
+NarrowItDownController	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^function NarrowItDownController(MenuSearchService) {$/;"	function	line:21
+MenuSearchService	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^function MenuSearchService($http, ApiBasePath) {$/;"	function	line:37
+searchDescription	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^  var searchDescription = function (list, value) {$/;"	function	line:42
+MenuSearchService.searchDescription	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^  var searchDescription = function (list, value) {$/;"	function	line:42
+searchMenuCategories	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^  service.searchMenuCategories = function (value) {$/;"	function	line:50
+service.searchMenuCategories	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^  };$/;"	function	line:48
+MenuSearchService	/home/wojtek/Development/Coursera/Angular1/coursera-angular1/assignments/assignment3/scripts/app.js	/^function MenuSearchService($http, ApiBasePath) {$/;"	function	line:37

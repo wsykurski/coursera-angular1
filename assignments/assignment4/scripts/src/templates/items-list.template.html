@@ -2,16 +2,20 @@
   <table class="table table-striped table-hover">
     <thead>
       <tr>
+        <th>Short Name:</th>
         <th>Name:</th>
         <th>Descriprion:</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="item in $ctrl.items">
-        <td>
-          {{item.name}}({{item.short_name}})
+        <td width="10%">
+          {{item.short_name}}
         </td>
-        <td>
+        <td width="30%">
+          {{item.name}}
+        </td>
+        <td width="60%">
           {{item.description}}
         </td>
       </tr>

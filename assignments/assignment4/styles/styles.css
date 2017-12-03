@@ -6,10 +6,13 @@ input[type="text"] {
   float: left;
 }
 
+tr:hover {
+  font-weight: bold;
+  font-size: 100%;
+}
 tr[ui-sref]:hover {
   cursor: pointer;
   color: rgb(36, 137, 194);
-  font-size: 110%;
 }
 
 .narrow-button {

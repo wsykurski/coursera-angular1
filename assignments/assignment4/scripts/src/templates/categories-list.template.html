@@ -2,6 +2,7 @@
   <table class="table table-striped table-hover">
     <thead>
       <tr>
+        <th>Short Name:</th>
         <th>Name:</th>
         <th>Descriprion:</th>
       </tr>
@@ -9,25 +10,16 @@
     <tbody>
       <tr ng-repeat="category in $ctrl.categories"
           ui-sref="items({short_name: category.short_name})">
-        <td>
-          {{category.name}}({{category.short_name}})
+        <td width="10%">
+          {{ category.short_name }}
         </td>
-        <td>
-          {{category.special_instructions}}
+        <td width="20%">
+          {{ category.name }}
+        </td>
+        <td width="70%">
+          {{ category.special_instructions }}
         </td>
       </tr>
     </tbody>
   </table>
-
-  <!-- <div class="row" ng-repeat="category in $ctrl.categories">
-    <div class="col-sm-3">
-      <a ui-sref="items({short_name: category.short_name})">
-        {{category.name}}({{category.short_name}})
-      </a>
-    </div>
-    <div class="col-sm-9">
-      {{category.special_instructions}}
-    </div>
-    <br>
-  </div> -->
 </div>

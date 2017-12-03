@@ -20,7 +20,6 @@ function MenuDataService($http, ApiCategories, ApiItems) {
   };
 
   service.getItemsForCategory = function (categoryShortName) {
-    console.log('Categoria to:', categoryShortName);
     return $http(
       {
         method: "GET",

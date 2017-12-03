@@ -9,6 +9,5 @@ function ItemsInCategoryController(data) {
   var ctrl = this;
   ctrl.items = data.menu_items;
   ctrl.category = data.category;
-  console.log('ctrl:', ctrl.items);
 }
 })();

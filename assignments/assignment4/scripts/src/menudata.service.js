@@ -1,20 +1,37 @@
 (function () {
-  'use strict';
+'use strict';
 
-  angular.module('MenuApp')
-    .service('MenuDataService', MenuDataService)
+angular.module('Data')
+  .service('MenuDataService', MenuDataService)
 
-  function MenuDataService() {
-    var service = this;
+MenuDataService.$inject = ['$http', 'ApiCategories', 'ApiItems'];
+function MenuDataService($http, ApiCategories, ApiItems) {
+  var service = this;
 
-    service.getAllCategories = function () {
-      // TODO: implement getAllCategories from API
-    };
+  service.getAllCategories = function () {
+    return $http(
+      {
+        method: "GET",
+        url: ApiCategories
+      })
+      .then(function (result) {
+        return result.data;
+      });
+  };
 
-    service.getItemsForCategory = function (categoryShortName) {
-      // TODO: implement get items for category from API
+  service.getItemsForCategory = function (categoryShortName) {
+    console.log('Categoria to:', categoryShortName);
+    return $http(
+      {
+        method: "GET",
+        url: ApiItems,
+        params: {category: categoryShortName}
+      })
+      .then(function (result) {
+        return result.data;
+      });
 
-    }
   }
+}
 
 })();

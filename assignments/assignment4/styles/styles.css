@@ -5,6 +5,13 @@ input[type="text"] {
   width: 200px;
   float: left;
 }
+
+tr[ui-sref]:hover {
+  cursor: pointer;
+  color: rgb(36, 137, 194);
+  font-size: 110%;
+}
+
 .narrow-button {
   float: left;
   margin-left: 10px;

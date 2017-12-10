@@ -1,0 +1,11 @@
+<h1>User Info</h1>
+<div class="alert alert-danger" ng-if="!userViewController.user">
+  Please register first!
+</div>
+<div class="alert alert-info" ng-if="userViewController.user">
+{{ userViewController.user.firstName }}
+{{ userViewController.user.lastName }} <br>
+{{ userViewController.user.email }} <br>
+{{ userViewController.user.phone }} <br>
+Favorit menu item: {{ userViewController.user.shortName }}
+</div>

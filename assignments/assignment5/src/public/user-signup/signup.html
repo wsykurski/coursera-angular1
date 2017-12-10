@@ -1,0 +1,71 @@
+<fieldset>
+    <legend style="color: white">
+      Please fill in:
+    </legend>
+    <form name='regForm' novalidate style="color: black">
+      <input type="text" name="firstName" placeholder="Your first name"=""
+      ng-model=signUpCtrl.user.firstName
+      required
+      minlength="2"
+      ng-maxlength="30">
+      <span class="alert"
+        ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+        First Name must be at least 2 characters long
+      </span>
+      <span  class="alert"
+        ng-if="regForm.username.$error.maxlength && regForm.username.$touched">
+        First Name must not be longer than 30 characters
+      </span>
+      <br>
+
+      <input type="text" name="lastname" placeholder="Your sedond name"=""
+      ng-model=signUpCtrl.user.lastName
+      required
+      minlength="2"
+      ng-maxlength="30">
+      <span  class="alert"
+        ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+        Last name must be at least 2 characters long
+      </span>
+      <span  class="alert"
+        ng-if="regForm.username.$error.maxlength && regForm.username.$touched">
+        Last name must not be longer than 30 characters
+      </span>
+
+      <br>
+      <input type="email" name="email" placeholder="Your email"=""
+      ng-model=signUpCtrl.user.email
+      required >
+      <span class="alert"
+        ng-if="regForm.email.$invalid && regForm.email.$touched">
+        Seams that You email is invalid
+      </span>
+
+      <br>
+      <input type="text" name="phone" placeholder="Your phone"=""
+      ng-model=signUpCtrl.user.phone
+      required
+      pattern="(\d{3})-(\d{3})-(\d{4})">
+      <span  class="alert"
+        ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+        Phone must be in the format ###-###-####.
+      </span>
+      <br>
+      <input type="text" name="favoritNumber" placeholder="Your Favorit Dish Number"
+      ng-model=signUpCtrl.user.shortName >
+      <span  class="alert"
+        ng-if="signUpCtrl.shortNameAlert">
+        No such menu item exists
+      </span>
+
+      <br>
+      <button
+        ng-disabled="regForm.$invalid"
+        ng-click="signUpCtrl.registerUser()">Register</button>
+    </form>
+    <div class="alert alert-success"
+         ng-if="signUpCtrl.success"
+    >
+      <strong>Success!</strong> You user info has been saved!
+    </div>
+</fieldset>

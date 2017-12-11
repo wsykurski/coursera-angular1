@@ -49,7 +49,10 @@ function routeConfig ($stateProvider) {
       resolve: {
         getUser: ['UserService', function (UserService) {
           return UserService.getUser;
-        }]
+        }],
+        getMenuItem: ['MenuService', function (MenuService) {
+           return MenuService.getSingleMenuItem;       
+         }]
       }
     })
     .state('public.signup', {

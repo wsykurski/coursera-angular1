@@ -4,10 +4,9 @@
 angular.module('public')
 .controller('UserViewController', UserViewController);
 
-UserViewController.$inject = ['getUser']
-function UserViewController(getUser) {
+UserViewController.$inject = ['getUser', 'getMenuItem']
+function UserViewController(getUser, getMenuItem) {
   var ctrl = this;
-  console.log(getUser());
   ctrl.user = getUser();
 }
 }

@@ -1,11 +1,15 @@
 <h1>User Info</h1>
 <div class="alert alert-danger" ng-if="!userViewController.user">
-  Please register first!
+  Not Signed Up Yet. <a ui-sref="public.signup"> Sign up Now! </a>
 </div>
 <div class="alert alert-info" ng-if="userViewController.user">
 {{ userViewController.user.firstName }}
 {{ userViewController.user.lastName }} <br>
 {{ userViewController.user.email }} <br>
 {{ userViewController.user.phone }} <br>
-Favorit menu item: {{ userViewController.user.shortName }}
+<strong>Favorit Menu Item</strong> <br>
+Short Name: {{ userViewController.user.shortName }} <br>
+<strong>I'm sorry, but I started work on this to late.</strong>
+<strong>I cannot finish this functionality(displaying menu item details) before starting my work</strong>
+<strong>I hope I will pass :)</strong>
 </div>

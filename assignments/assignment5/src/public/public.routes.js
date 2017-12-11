@@ -47,11 +47,11 @@ function routeConfig ($stateProvider) {
       controller: 'UserViewController',
       controllerAs: 'userViewController',
       resolve: {
-        getUser: ['UserService', function (UserService) {
-          return UserService.getUser;
+        userItem: ['UserService', function (UserService) {
+          return UserService.getUser();
         }],
-        getMenuItem: ['MenuService', function (MenuService) {
-           return MenuService.getSingleMenuItem;       
+        menuItems: ['MenuService', function (MenuService) {
+           return MenuService.getMenuItems();
          }]
       }
     })

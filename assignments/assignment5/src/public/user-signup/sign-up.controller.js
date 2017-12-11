@@ -12,7 +12,6 @@ function SignUpController(confirmShortName, getUser, setUser) {
   ctrl.success = false;
   ctrl.shortConfirm = (sn) => { return confirmShortName(sn)} ;
   ctrl.registerUser = function () {
-    console.log(ctrl.user);
     ctrl.shortConfirm(ctrl.user.shortName)
     .then(
       function () {
